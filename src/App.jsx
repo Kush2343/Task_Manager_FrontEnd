@@ -3,7 +3,8 @@ import axios from "axios"
 import TaskForm from "./Components/TaskForm"
 import TaskList from "./Components/TaskList"
 
-const APIURL = process.env.VITE_SERVERURL;
+const APIURL = import.meta.env.VITE_SERVERURL;
+console.log("u",APIURL);
 
 function App() {
   const [tasks, setTasks] = useState([])
