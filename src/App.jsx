@@ -3,6 +3,8 @@ import axios from "axios"
 import TaskForm from "./Components/TaskForm"
 import TaskList from "./Components/TaskList"
 
+const APIURL = process.env.VITE_SERVERURL;
+
 function App() {
   const [tasks, setTasks] = useState([])
 
@@ -11,22 +13,22 @@ function App() {
   }, [])
 
   const fetchTasks = async () => {
-    const response = await axios.get("http://localhost:5000/tasks")
+    const response = await axios.get(`${APIURL}/tasks`)
     setTasks(response.data)
   }
 
   const addTask = async (title, description) => {
-    await axios.post("http://localhost:5000/tasks", { title, description })
+    await axios.post(`${APIURL}/tasks`, { title, description })
     fetchTasks()
   }
 
   const updateTask = async (id, title, description) => {
-    await axios.put(`http://localhost:5000/tasks/${id}`, { title, description })
+    await axios.put(`${APIURL}/tasks/${id}`, { title, description })
     fetchTasks()
   }
 
   const deleteTask = async (id) => {
-    await axios.delete(`http://localhost:5000/tasks/${id}`)
+    await axios.delete(`${APIURL}/tasks/${id}`)
     fetchTasks()
   }
 
