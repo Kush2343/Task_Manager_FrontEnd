@@ -19,7 +19,7 @@ function TaskList({ tasks, onUpdateTask, onDeleteTask }) {
   }
 
   return (
-    <ul className="divide-y divide-gray-200">
+    <ul className="divide-y divide-gray-200 h-[225px] overflow-y-scroll">
       {tasks.map((task) => (
         <li key={task._id} className="p-4 hover:bg-gray-50 h-[225px] overflow-y-scroll">
           {editingId === task._id ? (
